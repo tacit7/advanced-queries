@@ -26,4 +26,29 @@ namespace :seed do
     Person.create people
   end
 
+  desc "create a db with data from the has_many article"
+  task has_many: [:environment, :clean_db] do
+    roles = [
+      {id: 1, name: 'Developer',  billable: true },
+      {id: 2, name: 'Manager',    billable: false},
+      {id: 3, name: 'Unassigned', billable: false},
+    ]
+
+    locations = [
+     { id: 1, name: 'Boston',   billable: 1, region_id: 1 },
+     { id: 2, name: 'New York', billable: 1, region_id: 1 },
+     { id: 3, name: 'Denver',   billable: 2, region_id: 2 },
+    ]
+    people = [
+      { id: 1, name: 'Wendell', location_id: 1, role_id: 1, salary: 100 },
+      { id: 2, name: 'Christie',location_id: 1, role_id: 1, salary: 100 },
+      { id: 3, name: 'Sandy',   location_id: 3, role_id: 1, salary: 100 },
+      { id: 4, name: 'Eve',     location_id: 2, role_id: 2, salary: 100 }
+    ]
+
+    Role.create     roles
+    Location.create locations
+    Person.create   people
+  end
+
 end
