@@ -1,5 +1,6 @@
 class Location < ActiveRecord::Base
-  has_many :people
+  has_many   :people
+  belongs_to :region
 
   scope :billable, -> {
     joins(people: :role)

@@ -46,9 +46,14 @@ namespace :seed do
       { id: 4, name: 'Eve',     location_id: 2, role_id: 2, salary: 100 }
     ]
 
+    regions = [
+      {id: 1, name: 'East'},
+      {id: 2, name: 'West'},
+    ]
     Role.create     roles
     Location.create locations
     Person.create   people
+    Region.create   regions
   end
 
 end
